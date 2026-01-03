@@ -3,7 +3,7 @@ import axios from "axios";
 import { useSearchParams } from "react-router-dom";
 import FoodCard from "../components/foodCard/FoodCard";
 import "./Food.scss";
-import Banner from "../components/Banner/Banner.jsx";
+import Banner from "../components/banner/Banner.jsx";
 import FoodCategory from "../components/FoodCategory/FoodCategory.jsx";
 const BASE_URL = import.meta.env.VITE_API_URL;
 import Faq from "../components/FAQ/Faq"
