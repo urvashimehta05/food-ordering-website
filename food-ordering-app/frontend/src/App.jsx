@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Login from "./pages//Login";
 import Register from "./pages/Register";
 import Foods from "./pages/Food";
@@ -11,10 +11,13 @@ import Orders from "./pages/Orders";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const App = () => {
+    const location = useLocation();
+      const hideLayoutRoutes = ["/login", "/register"];
+       const hideLayout = hideLayoutRoutes.includes(location.pathname);
   return (
     <>
   <ToastContainer position="top-center" autoClose={3000} />
-    <Header />
+     {!hideLayout && <Header />}
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
@@ -24,7 +27,7 @@ const App = () => {
 <Route path="/food/:id" element={<FoodDetailsPage />} />
 <Route path="/orders" element={<Orders />} />
     </Routes>
-    <Footer />
+    {!hideLayout && <Footer />}
     </>
   );
 };
