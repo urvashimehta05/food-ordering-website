@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
-import FoodCard from "../components/FoodCard/FoodCard";
+import FoodCard from "../components/foodCard/FoodCard";
 import "./Food.scss";
 import Banner from "../components/Banner/Banner.jsx";
 import FoodCategory from "../components/FoodCategory/FoodCategory.jsx";
