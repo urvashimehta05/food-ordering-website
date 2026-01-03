@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.scss";
 import { toast } from "react-toastify";
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${BASE_URL}/auth/login`, {
+      const res = await axios.post(`${BASE_URL}/api/auth/login`, {
         email,
         password,
       });

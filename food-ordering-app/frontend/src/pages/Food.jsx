@@ -5,7 +5,7 @@ import FoodCard from "../components/FoodCard/FoodCard";
 import "./Food.scss";
 import Banner from "../components/Banner/Banner.jsx";
 import FoodCategory from "../components/FoodCategory/FoodCategory.jsx";
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = import.meta.env.VITE_API_URL;
 import Faq from "../components/FAQ/Faq"
 const Foods = () => {
   const [foods, setFoods] = useState([]);
@@ -13,7 +13,7 @@ const Foods = () => {
   const searchQuery = searchParams.get("search") || "";
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/foods`)
+      .get(`${BASE_URL}/api/foods`)
       .then((res) => setFoods(res.data))
       .catch((err) => console.error(err));
   }, []);

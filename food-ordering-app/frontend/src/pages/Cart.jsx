@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Cart.scss";
 import { toast } from "react-toastify";
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
@@ -90,7 +90,7 @@ if (paymentMethod === "CARD") {
 
   try {
     await axios.post(
-      `${BASE_URL}/orders`,
+      `${BASE_URL}/api/orders`,
       {
         items,
         totalAmount: finalAmount, 

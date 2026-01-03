@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const Admin = () => {
   const [foods, setFoods] = useState([]);
@@ -24,7 +24,7 @@ const Admin = () => {
       return;
     }
 
-    axios.get(`${BASE_URL}/foods`).then(res => setFoods(res.data));
+    axios.get(`${BASE_URL}/api/foods`).then(res => setFoods(res.data));
   }, []);
 
   // ➕ ADD FOOD
@@ -32,7 +32,7 @@ const Admin = () => {
      console.log(token);
     e.preventDefault();
     const res = await axios.post(
-      `${BASE_URL}/foods`,
+      `${BASE_URL}/api/foods`,
       form,
       {
         headers: {
@@ -53,7 +53,7 @@ const Admin = () => {
 
   // ❌ DELETE FOOD
   const deleteFood = async (id) => {
-    await axios.delete(`${BASE_URL}/foods/${id}`, {
+    await axios.delete(`${BASE_URL}/api/foods/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Orders.scss";
 
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -10,7 +10,7 @@ const Orders = () => {
 
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/orders/my-orders`, {
+      .get(`${BASE_URL}/api/orders/my-orders`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
