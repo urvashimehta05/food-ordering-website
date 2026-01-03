@@ -3,6 +3,12 @@
   margin: 0 auto;        
   padding: 24px;
 }
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
 .foods-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); 

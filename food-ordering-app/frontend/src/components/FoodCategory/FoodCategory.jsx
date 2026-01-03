@@ -50,7 +50,7 @@ const FoodCategory = () => {
         <h2>What would you like to have?</h2>
         <p style={{fontWeight:"900"}}>Cheesy pizza or spicy burger?</p>
 
-        <div className="category-list">
+        <div className="category-list website">
           {categories.map((cat) => (
             <div className="category-item" key={cat.name}>
               <div className="circle">
@@ -60,7 +60,17 @@ const FoodCategory = () => {
             </div>
           ))}
         </div>
+<div className="category-list mobile">
+  {categories.slice(0, 3).map((cat) => (
+    <div className="category-item" key={cat.name}>
+      <div className="circle">
+        <img src={cat.image} alt={cat.name} />
       </div>
+      <span>{cat.name}</span>
+    </div>
+  ))}
+</div>
+</div>
     </section>
   );
 };

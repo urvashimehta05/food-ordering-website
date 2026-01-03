@@ -43,8 +43,6 @@ const Header = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </form>
-
-      {/* ACTIONS */}
       <div className="actions">
         <button className="cart-btn" onClick={() => navigate("/cart")}>
           Cart

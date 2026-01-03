@@ -130,3 +130,32 @@
   font-weight: 500;
   margin-bottom: 8px;
 }
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: wrap;
+  margin-bottom: 36px !important;  
+  margin-right: 10px !important;
+
+  }
+
+  /* Top row */
+  .logo {
+    order: 1;
+  }
+
+  .actions {
+    order: 2;
+  }
+
+  .search-bar {
+    order: 3;
+    flex: 0 0 100%;   
+    max-width: 100%;
+    margin: 12px 0 0;
+    
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+}

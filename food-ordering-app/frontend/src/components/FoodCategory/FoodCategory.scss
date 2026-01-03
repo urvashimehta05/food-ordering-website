@@ -7,6 +7,9 @@
     rgba(255, 255, 255, 0.85)
   );
 }
+.mobile{
+  display: none !important;
+}
 
 .overlay-bg {
   max-width: 1200px;
@@ -76,7 +79,15 @@
   .category-list {
     gap: 20px;
   }
-
+.website {
+  display: none !important;
+}
+  .mobile {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
   .circle {
     width: 90px;
     height: 90px;
@@ -84,5 +95,10 @@
 
   .overlay-bg h2 {
     font-size: 22px;
+  }
+}
+@media (max-width: 480px) {
+  .category-list {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
