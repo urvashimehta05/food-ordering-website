@@ -15,7 +15,7 @@ const router = express.Router();
 router.get("/", getFoods);
 
 // Admin
-router.post("/", protect, adminOnly, addFood);
+router.post("/", addFood);
 router.put("/:id", protect, adminOnly, updateFood);
 router.get("/:id", getFoodById); 
 router.delete("/:id", protect, adminOnly, deleteFood);

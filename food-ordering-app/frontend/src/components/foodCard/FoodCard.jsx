@@ -9,7 +9,10 @@ const FoodCard = ({ food, isActive, onSelect }) => {
       onClick={() => navigate(`/food/${food._id}`)} 
     >
       <div className="image-wrapper">
-        <img src={food.image} alt={food.name} loading="lazy" />
+        <img src={food.image} alt={food.name} onError={(e) => {
+    e.target.src =
+      "https://media.istockphoto.com/id/1384617341/photo/collection-of-junk-foods-scattered-over-a-white-marble-background.jpg?s=1024x1024&w=is&k=20&c=pCIQliS2xVQYvyx_l_6t_qohbP4cyS10EKHhMBs9Jqc=";
+  }}loading="lazy" />
       </div>
 
       <div className="card-content">
