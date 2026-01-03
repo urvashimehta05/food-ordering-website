@@ -1,0 +1,132 @@
+.header {
+  height: 64px;
+  padding: 0 32px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #e23744;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  button {
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+
+    &:hover {
+      background: #f3f4f6;
+    }
+  }
+
+  .signup {
+    background: #e23744;
+    color: #fff;
+
+    &:hover {
+      background: #d32f2f;
+    }
+  }
+
+  .logout {
+    background: #ef4444;
+    color: #fff;
+
+    &:hover {
+      background: #dc2626;
+    }
+  }
+
+  .username {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+  }
+}
+.search-bar {
+  flex: 1;
+  max-width: 420px;
+  margin: 0 24px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.25s ease;
+
+  &:focus {
+    background: #ffffff;
+    border-color: #e23744;
+    box-shadow: 0 0 0 2px rgba(226, 55, 68, 0.15);
+  }
+}
+.account-wrapper {
+  position: relative;
+}
+
+.account-icon {
+  width: 36px;
+  height: 36px;
+  background: #f2f2f2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.account-dropdown {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  padding: 12px;
+  min-width: 140px;
+  z-index: 100;
+}
+
+.account-dropdown button {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.account-dropdown button:hover {
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.account-dropdown .username {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}

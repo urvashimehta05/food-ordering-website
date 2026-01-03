@@ -1,0 +1,88 @@
+.food-category {
+  width: 100%;
+  padding: 60px 20px;
+  margin: 40px 0;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.85),
+    rgba(255, 255, 255, 0.85)
+  );
+}
+
+.overlay-bg {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.overlay-bg h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #e23744; // 🔴 red text
+}
+
+.overlay-bg p {
+  margin-top: 8px;
+  font-size: 16px;
+  color: #374151;
+}
+
+/* CATEGORY LIST */
+.category-list {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+/* SINGLE ITEM */
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* CIRCLE IMAGE */
+.circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #e23744;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.category-item:hover .circle {
+  transform: scale(1.08);
+}
+
+/* TEXT BELOW */
+.category-item span {
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #e23744;
+}
+
+/* MOBILE */
+@media (max-width: 640px) {
+  .category-list {
+    gap: 20px;
+  }
+
+  .circle {
+    width: 90px;
+    height: 90px;
+  }
+
+  .overlay-bg h2 {
+    font-size: 22px;
+  }
+}
