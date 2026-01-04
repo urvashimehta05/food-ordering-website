@@ -12,9 +12,12 @@ const Cart = () => {
   const [cardNumber, setCardNumber] = useState("");
 const [expiry, setExpiry] = useState("");
 const [cvv, setCvv] = useState("");
-
+const [delivery, setDelivery] = useState("");
+const [promocode, setPromoCode] = useState("");
+ const [appliedPromo, setAppliedPromo] = useState("");
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+    const [error, setError] = useState(false);
 
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -110,7 +113,22 @@ if (paymentMethod === "CARD") {
     toast.error("Failed to place order");
   }
 };
-
+const promoApply = ()=>{
+      if (!promocode.trim()) return;
+  if(promocode==="Welcome1"){
+    setAppliedPromo(promocode.toUpperCase())
+    setError(false)
+    setDelivery(0)
+  } else {
+    setAppliedPromo(promocode.toUpperCase())
+    setError(true)
+    setDelivery(40)
+  }
+}
+  const cancelPromo = () => {
+    setAppliedPromo("");
+    setPromoCode("");
+  };
 
   return (
     <div className="cart-page">
@@ -158,7 +176,36 @@ if (paymentMethod === "CARD") {
       onChange={(e) => setAddress(e.target.value)}
     />
   </div>
-
+  <div className="promoBox">
+         <input
+        type="text"
+        placeholder="Have a coupon code? Type here"
+        value={promocode}
+        name="promocode"
+        onChange={(e) =>setPromoCode(e.target.value) }
+      />
+      {!appliedPromo ? (
+        <button
+          className="promo"
+          disabled={!promocode.trim()}
+          onClick={promoApply}
+          type="button"
+        >
+          APPLY
+        </button>
+      ) : (
+        <button className="promo cancel" type="button" onClick={cancelPromo}>
+          CANCEL
+        </button>
+      )}
+      </div>
+{error ? (
+  <p className="promo-error">
+    Promo code <strong>{appliedPromo}</strong> is not valid. Please try another code.
+  </p>
+) : (
+  <p className="PromoText">Use <strong>Welcome1</strong> to get free delivery</p>
+)}
   {/* PRICE SUMMARY */}
   <div className="checkout-section summary">
     <h4>Order Summary</h4>
@@ -170,12 +217,12 @@ if (paymentMethod === "CARD") {
 
     <div className="summary-row">
       <span>Delivery fee</span>
-      <span>₹40</span>
+      <span>{delivery}</span>
     </div>
 
     <div className="summary-row total">
       <span>Total payable</span>
-      <span>₹{totalAmount + 40}</span>
+      <span>₹{totalAmount + delivery}</span>
     </div>
   </div>
 
@@ -223,6 +270,7 @@ if (paymentMethod === "CARD") {
       <input
         type="password"
         placeholder="CVV"
+        className="promoInput"
         maxLength="3"
         value={cvv}
         onChange={(e) => setCvv(e.target.value.replace(/\D/g, ""))}
@@ -230,7 +278,7 @@ if (paymentMethod === "CARD") {
     </div>
   </div>
 )}
-  <button onClick={placeOrder}>
+  <button onClick={placeOrder} className="checkout">
     Place Order
   </button>
 

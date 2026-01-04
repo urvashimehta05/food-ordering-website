@@ -130,6 +130,19 @@
   padding: 14px;
   border-radius: 12px;
 }
+.promo-error {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #d32f2f;
+  text-align: center;
+}
+.PromoText {
+    margin-top: 6px;
+  font-size: 12px;
+  color: #16a34a;
+  margin-left: 2.8rem;
+  text-align: justify;
+}
 
 .summary-row {
   display: flex;
@@ -151,7 +164,7 @@
   font-size: 14px;
   cursor: pointer;
 }
-.checkout-box button {
+.checkout {
   width: 100%;
   padding: 14px;
   background: linear-gradient(135deg, #e23744, #ff6b6b);
@@ -163,14 +176,10 @@
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 .checkout-box button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(226, 55, 68, 0.35);
 }
-/* =====================
-   CARD DETAILS
-===================== */
 .card-section input {
   width: 100%;
   padding: 12px;
@@ -184,6 +193,51 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+}
+.promo {
+  width: fit-content;
+  padding: 2px 8px;
+  height: 20px;
+  background-color: rgba(239, 79, 95, 0.15); 
+  color: #ef4f5f;
+  border-radius: 4px;
+  border: 1px solid rgba(239, 79, 95, 0.35);
+margin: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.promoBox {
+  display: flex;
+  justify-content: center;
+}
+.promoInput {
+    height: 36px;
+  padding: 0 12px;
+   
+  font-size: 13px;
+  font-weight: 400;
+  color: #1c1c1c;
+
+  background-color: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &::placeholder {
+    color: #9c9c9c;
+    font-size: 12px;
+  }
+
+  &:focus {
+    border-color: #ef4f5f;
+    box-shadow: 0 0 0 1px rgba(239, 79, 95, 0.25);
+  }
 }
 @media (max-width: 768px) {
   .cart-layout {

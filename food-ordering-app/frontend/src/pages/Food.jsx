@@ -10,13 +10,25 @@ import Faq from "../components/FAQ/Faq"
 const Foods = () => {
   const [foods, setFoods] = useState([]);
   const [searchParams] = useSearchParams();
+    const [loading, setLoading] = useState(false);
   const searchQuery = searchParams.get("search") || "";
-  useEffect(() => {
-    axios
-      .get(`${BASE_URL}/api/foods`)
-      .then((res) => setFoods(res.data))
-      .catch((err) => console.error(err));
-  }, []);
+   useEffect(() => {
+  const fetchFoods = async () => {
+    try {
+      setLoading(true);
+
+      const res = await axios.get(`${BASE_URL}/api/foods`);
+      setFoods(res.data);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchFoods();
+}, []);
+
   const filteredFoods = searchQuery
     ? foods.filter((food) =>
         food.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -32,15 +44,19 @@ const Foods = () => {
       <h2 style={{ textAlign: "center" }}>Food Menu</h2>
 
       <div className="foods-page">
-        <div className="foods-grid">
-          {filteredFoods.length > 0 ? (
-            filteredFoods.map((food) => (
-              <FoodCard key={food._id} food={food} />
-            ))
-          ) : (
-            <p style={{ textAlign: "center" }}>No food found 🍽️</p>
-          )}
-        </div>
+      <div className="foods-grid">
+  {loading && <p style={{ textAlign: "center" }}>Loading...</p>}
+
+  {!loading && filteredFoods.length === 0 && (
+    <p style={{ textAlign: "center" }}>No food found 🍽️</p>
+  )}
+
+  {!loading &&
+    filteredFoods.map((food) => (
+      <FoodCard key={food._id} food={food} />
+    ))}
+</div>
+
       </div>
     </div>
     <Faq />

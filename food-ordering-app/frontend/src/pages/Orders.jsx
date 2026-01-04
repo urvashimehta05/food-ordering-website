@@ -6,26 +6,49 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    axios
-      .get(`${BASE_URL}/api/orders/my-orders`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => setOrders(res.data))
-      .catch((err) => console.error(err));
+    const fetchOrders = async () => {
+      try {
+        setLoading(true);
+
+        const res = await axios.get(
+          `${BASE_URL}/api/orders/my-orders`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        setOrders(res.data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOrders();
   }, []);
 
   return (
     <div className="orders-page">
       <h2>Your Orders</h2>
 
-      {orders.length === 0 ? (
+      {/* Loading */}
+      {loading && <p>Loading...</p>}
+
+      {/* Empty state */}
+      {!loading && orders.length === 0 && (
         <p>You have not placed any orders yet</p>
-      ) : (
+      )}
+
+      {/* Orders list */}
+      {!loading &&
         orders.map((order) => (
           <div key={order._id} className="order-card">
             <div className="order-header">
@@ -37,7 +60,11 @@ const Orders = () => {
 
             {order.items.map((item, i) => (
               <div key={i} className="order-item">
-                <img src={item.food.image} alt={item.food.name} loading="lazy" />
+                <img
+                  src={item.food.image}
+                  alt={item.food.name}
+                  loading="lazy"
+                />
                 <div>
                   <p>{item.food.name}</p>
                   <span>
@@ -51,8 +78,7 @@ const Orders = () => {
               Total: ₹{order.totalAmount}
             </div>
           </div>
-        ))
-      )}
+        ))}
     </div>
   );
 };
